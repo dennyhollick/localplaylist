@@ -1,1 +1,2 @@
-## LocalMusic App
+## localplaylist
+A final project for Lighthouse Labs
