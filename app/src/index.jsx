@@ -1,11 +1,15 @@
 require('../styles/main.scss');
-
-import React from 'react';
-import {render} from 'react-dom';
-import App from './App.jsx';
+import {setState}  from './appState';
 
 if(module.hot) {
   module.hot.accept();
 }
 
-render(<App />, document.getElementById('react-root'));
+setState({
+  view: '',
+  user: null,
+  locations: [],
+  genres: [],
+  concerts: [],
+  songs: [],
+});
