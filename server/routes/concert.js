@@ -7,7 +7,7 @@ module.exports = knex => ({
   getConcertData: (id, query, playlistData) => {
     return new Promise((resolve, reject) => {
       let apiResponse = '';
-      
+
       const modifiedQuery = {
         location: query.city,
         categories: query.categories,
@@ -19,7 +19,7 @@ module.exports = knex => ({
       rp.get(url)
         .then((response) => {
           let counter = 0;
-          
+
           while (!response) {
             counter += 1;
             if (counter > 5) {
@@ -48,5 +48,5 @@ module.exports = knex => ({
         });
     });
   },
-  
+
 });

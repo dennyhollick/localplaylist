@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 const express = require('express');
 
 const app = express();
@@ -25,7 +25,7 @@ const ENV = process.env.NODE_ENV || 'development';
 
 const morgan = require('morgan');
 
-function skipLog(req, res) {
+function skipLog(req) {
   let url = req.url;
   if (url.indexOf('?') > 0) {
     url = url.substr(0, url.indexOf('?'));
@@ -85,7 +85,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// Pulls static files from build folder if in production mode, otherwise will start webpack dev server and hotmodule
+// Pulls static files from build folder if prod mode, otherwise start webpack dev server, hotmodule
 
 if (ENV === 'production') {
   app.use(express.static('build'));

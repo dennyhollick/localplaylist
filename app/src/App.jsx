@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScaleLoader } from 'react-spinners';
 import NavBar from './NavBar.jsx';
-import { setView } from './actions.js';
+// import { setView } from './actions.js';
 import Home from './Home.jsx';
 import videoMpg from '../static/Major-Tom.mp4';
 
@@ -67,7 +67,7 @@ class App extends Component {
                     Marshall Danel
                     <br />
                     <span className="icon is-small is-left">
-                      <i className="fa fa-user"></i>
+                      <i className="fa fa-user" />
                     </span>
                     marshalldanel@gmail.com
                   </p>
@@ -79,7 +79,7 @@ class App extends Component {
                     Sanjana Desai
                     <br />
                     <span className="icon is-small is-left">
-                      <i className="fa fa-user"></i>
+                      <i className="fa fa-user" />
                     </span>
                     sanjana_desai@live.ca
                   </p>
@@ -91,7 +91,7 @@ class App extends Component {
                     Denny Hollick
                     <br />
                     <span className="icon is-small is-left">
-                      <i className="fa fa-user"></i>
+                      <i className="fa fa-user" />
                     </span>
                     dennyhollick@gmail.com
                   </p>

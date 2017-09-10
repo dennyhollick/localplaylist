@@ -17,11 +17,11 @@ module.exports = (knex) => {
         .then((users) => {
           if (!users.length) {
             return knex('users').insert({
-              user_cookie
+              user_cookie,
             }).returning('id');
           }
 
-          let id = users[0].id;
+          const id = users[0].id;
 
           return knex('users').where('id', id).returning('first_name')
             .update({
@@ -39,7 +39,7 @@ module.exports = (knex) => {
         });
     });
   });
-  
+
 
   router.post('/login', (req, res) => {
     const email = req.body.email;
@@ -49,7 +49,7 @@ module.exports = (knex) => {
       return knex('users').select('id').where('email', email)
         .then((users) => {
           if (!users.length) {
-            return Promise.reject(new Error("user not found!"));
+            return Promise.reject(new Error('user not found!'));
           }
           return knex('users').where('id', users[0].id)
             .then((user) => {

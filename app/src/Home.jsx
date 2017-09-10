@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import QuestionsContainer from './QuestionsContainer.jsx';
-import { setView } from './actions.js';
+// import { setView } from './actions.js';
 import Button from './Button.jsx';
 import CitiesResults from './CitiesResults.jsx';
-import ConcertMarquee from './ConcertMarquee.jsx';
+// import ConcertMarquee from './ConcertMarquee.jsx';
 
 class Home extends Component {
   render() {
@@ -18,7 +18,7 @@ class Home extends Component {
             genres={this.props.genres}
           />
           <Button view={this.props.view} />
-           {/* <CitiesResults />   */}
+          {/* <CitiesResults />   */}
 
         </div>
       );

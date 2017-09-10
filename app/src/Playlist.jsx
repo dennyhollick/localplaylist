@@ -36,7 +36,7 @@ class Playlist extends Component {
                 <span className="icon is-small">
                   <i className="fa fa-spotify" aria-hidden="true" />
                 </span>
-              <span>Save to Spotify</span>
+                <span>Save to Spotify</span>
               </button>
             </div>
           </div>
@@ -47,7 +47,13 @@ class Playlist extends Component {
           const songArtist = firstSongResult.artists[0].name;
           const songPreviewUrl = firstSongResult.preview_url;
 
-          return <PlaylistSong title={songTitle} artist={songArtist} previewurl={songPreviewUrl} index={index} key={index} />;
+          return (<PlaylistSong
+            title={songTitle}
+            artist={songArtist}
+            previewurl={songPreviewUrl}
+            index={index}
+            key={index}
+          />);
         })}
       </div>
     );

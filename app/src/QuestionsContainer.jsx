@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import LocationsList from './LocationsList.jsx';
-import { setView } from './actions.js';
+// import { setView } from './actions.js';
 import GenresSelect from './GenreSelect.jsx';
-import Button from './Button.jsx';
+// import Button from './Button.jsx';
 
 class QuestionsContainer extends Component {
   render() {

@@ -153,7 +153,6 @@ export function userRegister(firstname, lastname, email, password, confirmPasswo
     confirmPassword,
     loggedIn: true,
   }).then((response) => {
-    console.log(response.json());
     return response.json();
   });
 }
@@ -163,7 +162,6 @@ export function userLogin(email, password) {
     email,
     password,
   }).then((response) => {
-    console.log(response);
     return response.json();
     // here we should get the user's first name in the response (resonse.body.firstname)
     // such that we can get the username to display in nav
@@ -186,7 +184,6 @@ export function savePlaylist(cityPlaylist) {
     cityPlaylist,
   })
     .then((response) => {
-      console.log(response);
       return response.json();
     });
 }

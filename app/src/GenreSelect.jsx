@@ -3,7 +3,6 @@ import { updateGenreField } from './actions.js';
 
 class GenreSelect extends Component {
   render() {
-    
     // Props and constants 
 
     const genres = this.props.genres;
