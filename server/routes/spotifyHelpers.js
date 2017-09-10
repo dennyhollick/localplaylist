@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const redirect_uri = 'http://0.0.0.0:3000/callback';
+// const redirect_uri = 'http://0.0.0.0:3000/callback';
 
 const spotifyApi = new SpotifyWebApi({
   clientId: client_id,
@@ -44,6 +44,17 @@ function topThreeTracks(trackList) {
   return artistTopThree;
 }
 
+function getArtistId(artist) {
+  return spotifyApi.searchArtists(artist)
+    .then((data) => {
+      return data.body.artists;
+    });
+}
+
+function getTopTracks(artistId) {
+  return spotifyApi.getArtistTopTracks(artistId, 'CA');
+}
+
 function getTopThreeTracksForArtistOrUndefined(artist) {
   return getArtistId(artist)
     .then((artistResults) => {
@@ -52,17 +63,6 @@ function getTopThreeTracksForArtistOrUndefined(artist) {
       }
       return getTopTracks(artistResults.items[0].id)
         .then(topThreeTracks);
-    });
-}
-
-function getTopTracks(artistId) {
-  return spotifyApi.getArtistTopTracks(artistId, 'CA');
-}
-
-function getArtistId(artist) {
-  return spotifyApi.searchArtists(artist)
-    .then((data) => {
-      return data.body.artists;
     });
 }
 
@@ -86,14 +86,12 @@ function makePrivatePlaylist(id, accessToken, refreshToken, playlist) {
     .then((data) => {
       return data;
     }, (err) => {
-      console.log("In error block", spotifyUserApi);
       console.log('Something went wrong!', err);
     })
     .then((data) => {
-      spotifyUserApi.addTracksToPlaylist(data.body.owner.id, data.body.id, playlist) // cityPlaylist[0].id
-        .then((data) => {
-          // console.log(data);
-          console.log('Added tracks to playlist!');
+      spotifyUserApi.addTracksToPlaylist(data.body.owner.id, data.body.id, playlist)
+        .then((response) => {
+          console.log('Added tracks to playlist!', response);
         }, (err) => {
           console.log('Something went wrong!', err);
         });
