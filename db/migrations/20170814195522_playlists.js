@@ -1,6 +1,6 @@
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('playlists', function(table){
+    knex.schema.createTable('playlists', (table) => {
       table.increments('id').primary();
       table.string('name').notNull();
       table.string('city').notNull();
@@ -9,12 +9,12 @@ exports.up = function(knex, Promise) {
       table.integer('trip_id').unsigned().notNull();
       table.foreign('trip_id').references('trips.id');
       table.timestamps();
-    })
-  ])
+    }),
+  ]);
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('playlists')
-  ])
+    knex.schema.dropTable('playlists'),
+  ]);
 };
