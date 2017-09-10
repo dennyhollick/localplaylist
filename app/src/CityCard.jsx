@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import ConcertMarquee from './ConcertMarquee.jsx';
 import Playlist from './Playlist.jsx';
-import moment from 'moment'
 
 class CityCard extends Component {
   constructor(props) {

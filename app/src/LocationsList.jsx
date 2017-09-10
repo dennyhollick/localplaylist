@@ -4,7 +4,6 @@ import LocationField from './LocationField.jsx';
 
 class LocationsList extends Component {
   render() {
-
     // Passes in empty location data to render form input fields
     const locations = this.props.locations.map((location, index) => {
       return (

@@ -20,7 +20,6 @@ class NavBar extends Component {
 
   render() {
     const view = this.props.view;
-    console.log(this.props.view);
     let whiteclass = 'has-text-white-bis';
     if (view === 'itinerary') {
       whiteclass = '';

@@ -59,12 +59,13 @@ class PlaylistSong extends Component {
             />
           </span>
           <span className="icon">
-            <i 
-            role="button"
-            className="fa fa-stop-circle" 
-            onClick={() => {
+            <i
+              role="button"
+              className="fa fa-stop-circle"
+              onClick={() => {
                 this.stopButton();
-              }}/>
+              }}
+            />
           </span>
         </div>
       );
