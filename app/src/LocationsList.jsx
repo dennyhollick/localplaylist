@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import LocationField from './LocationField.jsx';
 
+const shortid = require('shortid');
 
 class LocationsList extends Component {
   render() {
-
     // Passes in empty location data to render form input fields
     const locations = this.props.locations.map((location, index) => {
       return (
         <LocationField
-          key={index}
+          key={shortid.generate()}
           index={index}
           city={location.city}
           start_date={location.start_date}

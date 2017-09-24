@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CityCard from './CityCard.jsx';
 import { getConcerts } from './actions.js';
 
+const shortid = require('shortid');
 
 class CitiesResults extends Component {
   render() {
@@ -9,7 +10,7 @@ class CitiesResults extends Component {
 
 
     const trips = returnedQuery.map((locations, index) => {
-      return (<CityCard key={index} trip={locations} index={index} />);
+      return (<CityCard key={shortid.generate()} trip={locations} index={index} />);
     });
 
     return (

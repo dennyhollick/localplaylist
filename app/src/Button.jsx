@@ -10,7 +10,6 @@ class Button extends Component {
     const locations = getLocations();
 
     locations.forEach((location) => {
-      console.log(location);
       if (location.city === '') {
         err = 'There is an empty location! Add a city name or remove the city';
         buttonDisabled = true;

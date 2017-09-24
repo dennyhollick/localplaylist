@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { DateRangePicker } from 'react-dates'; //  SingleDatePicker, DayPickerRangeController - need?
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { updateLocationField, getLocations, addLocationField, removeLocationField } from './actions.js';
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-
 
 // We can force validations for cities via this: https://github.com/kenny-hibino/react-places-autocomplete/issues/106
-// We may need to update the eventful API to receive geo cordinates within. It will make results more accurate
-// TODO: Something is wrong with how the city state is updated. Check out when the city state is updated. It should be 'onChange'
-
+// My need to update the eventful API to receive geo cordinates. It will make results more accurate
+// TODO: Som
 
 class LocationField extends Component {
   constructor(props) {
@@ -49,7 +47,7 @@ class LocationField extends Component {
 
     // Conditionally render add/remove location buttons 
     const index = this.props.index;
-    const location = getLocations()[index];
+    // const location = getLocations()[index];
     let buttons = null;
     let buttonsDisabled = false;
     if (getLocations()[index].city === '') {

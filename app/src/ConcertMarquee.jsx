@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import ConcertCard from './ConcertCard.jsx';
 import { updateConcertIndex, getConcerts, getConcertViewIndex } from './actions.js';
 
+const shortid = require('shortid');
+
 class ConcertMarquee extends Component {
-  // TODO: Concert index state needs to be held within the component otherwise it will affect other ones.
+  // TODO: Concert index state needs to be held within the component or it will affect other ones.
 
   render() {
     const playlistNumber = this.props.index;
-    const ConcertObjNum = playlistNumber; // if concerts has more than one Obj, it needs to match with the right list to make a marquee
+    const ConcertObjNum = playlistNumber; // if concerts > 1 Obj, needs to match right list work
 
     const concertData = getConcerts();
-    const playlistData = concertData[ConcertObjNum];
+    // const playlistData = concertData[ConcertObjNum];
     const events = concertData[ConcertObjNum].eventResponse.events.event;
 
 
@@ -24,10 +26,10 @@ class ConcertMarquee extends Component {
     const concerts = events
       .slice(start, end)
       .concat(events.slice(0, Math.max(0, end - events.length)))
-      .map((event, index) => {
+      .map((event) => {
         return (
           <ConcertCard
-            key={index}
+            key={shortid.generate()}
             concert={event}
           />);
       });

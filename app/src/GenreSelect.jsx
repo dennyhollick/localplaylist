@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { updateGenreField } from './actions.js';
 
+const shortid = require('shortid');
+
 class GenreSelect extends Component {
   render() {
-    
     // Props and constants 
 
     const genres = this.props.genres;
@@ -74,12 +75,12 @@ class GenreSelect extends Component {
     // Once clicked, will toggle state of Genre 
     // If genre state is set, will render button as 'active'
 
-    const genreSelector = genreObjects.map((item, index) => {
+    const genreSelector = genreObjects.map((item) => {
       let buttonClass = 'button is-primary fixed-width-100';
       if (genres.indexOf(item.genre) > -1) {
         buttonClass += ' is-active';
       }
-      return (<div key={index} className="column is-one-quarter is-capitalized">
+      return (<div key={shortid.generate()} className="column is-one-quarter is-capitalized">
         {/* eslint-disable jsx-a11y/interactive-supports-focus */}
         <div
           className={buttonClass}

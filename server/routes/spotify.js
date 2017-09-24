@@ -1,5 +1,5 @@
 const express = require('express');
-const expressSession = require('express-session');
+// const expressSession = require('express-session');
 
 const router = express.Router();
 const passport = require('passport');
@@ -12,23 +12,24 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const redirect_uri = 'http://0.0.0.0:3000/callback';
 
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/spotify-userAuth');
-  next();
-}
+// function ensureAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) { return next(); }
+//   res.redirect('/spotify-userAuth');
+//   next();
+// }
+
 // Spotify Web Node module
 module.exports = (knex) => {
   passport.serializeUser((user, done) => {
-    console.log('serializeeeeeee', user);
+    // console.log('serializeeeeeee', user);
     done(null, user.spotify_id);
   });
 
   passport.deserializeUser((spotify_id, done) => {
-    console.log(spotify_id);
+    // console.log(spotify_id);
     knex('users').where('spotify_id', spotify_id)
       .then((users) => {
-        console.log('deeeeserralizeeeeee', users[0]);
+        // console.log('deeeeserralizeeeeee', users[0]);
         done(null, users[0]);
       });
   });
@@ -68,7 +69,7 @@ module.exports = (knex) => {
       res.status(204).send();
     });
 
-  router.use(ensureAuthenticated);
+  // router.use(ensureAuthenticated);
 
   router.get('/current-user', (req, res) => {
     res.json(req.user);
@@ -79,8 +80,10 @@ module.exports = (knex) => {
     const songIds = userPlaylist.map((song) => {
       return `spotify:track:${song.id}`;
     });
-    console.log("This is an array of song ids", songIds);
-    makePrivatePlaylist(req.user.spotify_id, req.user.access_token, req.user.refresh_token, songIds);
+    makePrivatePlaylist(
+      req.user.spotify_id,
+      req.user.access_token,
+      req.user.refresh_token, songIds);
     res.status(200).send();
   });
 
