@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LocationField from './LocationField.jsx';
 
+const shortid = require('shortid');
 
 class LocationsList extends Component {
   render() {
@@ -8,7 +9,7 @@ class LocationsList extends Component {
     const locations = this.props.locations.map((location, index) => {
       return (
         <LocationField
-          key={index}
+          key={shortid.generate()}
           index={index}
           city={location.city}
           start_date={location.start_date}
