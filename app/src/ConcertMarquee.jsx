@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ConcertCard from './ConcertCard.jsx';
 import { updateConcertIndex, getConcerts, getConcertViewIndex } from './actions.js';
 
+const shortid = require('shortid');
+
 class ConcertMarquee extends Component {
   // TODO: Concert index state needs to be held within the component or it will affect other ones.
 
@@ -24,10 +26,10 @@ class ConcertMarquee extends Component {
     const concerts = events
       .slice(start, end)
       .concat(events.slice(0, Math.max(0, end - events.length)))
-      .map((event, index) => {
+      .map((event) => {
         return (
           <ConcertCard
-            key={index}
+            key={shortid.generate()}
             concert={event}
           />);
       });

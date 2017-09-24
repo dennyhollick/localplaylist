@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getConcerts, savePlaylist } from './actions.js';
 import PlaylistSong from './PlaylistSong.jsx';
 
+const shortid = require('shortid');
 
 class Playlist extends Component {
   render() {
@@ -52,7 +53,7 @@ class Playlist extends Component {
             artist={songArtist}
             previewurl={songPreviewUrl}
             index={index}
-            key={index}
+            key={shortid.generate()}
           />);
         })}
       </div>
